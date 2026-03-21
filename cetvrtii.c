@@ -225,7 +225,30 @@ void IzbaciNule(Clan polinom[], int* n)
 }
 void print(Clan polinom[], int n)
 {
-
+int i = 0;
+for (i = 0; i < n-1; i++)
+printf("%.2fX^%.2f + ", polinom[i].Koeficijent, polinom[i].Stepen);
+if (n != 0)
+printf("%.2fX^%.2f\n", polinom[n - 1].Koeficijent, polinom[n - 1].Stepen);}
+int main()
+{
+Clan* polinom;
+int i, n;
+float x;
+scanf("%d", &n);
+polinom = (Clan*)malloc(n * sizeof(Clan));
+for (i = 0; i < n; i++)
+scanf("%f%f", &polinom[i].Stepen, &polinom[i].Koeficijent);
+scanf("%f", &x);
+print(polinom, n);
+printf("%.2f\n", Vrednost(polinom, n, x));
+SortPoStepenu(polinom, n);
+print(polinom, n);
+IzbaciNule(polinom, &n);
+print(polinom, n);
+free(polinom);
+return 0;
+}
 
 
 /*
